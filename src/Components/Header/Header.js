@@ -1,13 +1,15 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import CartContext from "../../Hooks/CartContext";
-import useCart from "../../Hooks/CartContext";
+import useCart, {myCartState$} from "../../Hooks/UseCart";
 
 
 import "./Header.scss";
 
 
-let counter = 0;
+
 const Header = (props) => {
+
+    let value = useCart();
     
     return (
         <header>
@@ -19,18 +21,13 @@ const Header = (props) => {
                     <li><Link to="cart">Cart</Link></li>
                     <li><Link to="checkout">Checkout</Link></li>
                 </ul>
-                
-                <CartContext>
-                    {values => (
-                        values.items.length
-                    )}
-                </CartContext>
+                {value.length}
                 
                 
                 
             </nav>
         </header>
-    )
+    );
 
 }
 

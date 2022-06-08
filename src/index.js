@@ -6,7 +6,7 @@ import App from './App';
 import Home from './Pages/Home';
 import Products from './Pages/Products';
 import Product from './Pages/Product';
-import Cart from './Pages/Cart';
+import Cart from './Pages/Cart/Cart';
 import Checkout from './Pages/Checkout';
 import reportWebVitals from './reportWebVitals';
 import Header from './Components/Header/Header';

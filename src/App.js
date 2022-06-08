@@ -13,17 +13,20 @@ function App() {
     setCartItems([...cartItems,item]);
   };
 
-  const popItems = () => {
-    cartItems.pop()
+  const deleteItems = (id) => {
+    let index =cartItems.indexOf(id);
+    console.log(index);
+    cartItems.splice(index,1);
+    console.log ("Cart:", cartItems);
     setCartItems(cartItems);
   };
 
   return (
     <>
-      <CartContext.Provider value={{items: cartItems , add: addItem, remove: popItems }}>
+      
         <Header/>
         <Outlet/>
-      </CartContext.Provider>
+     
         
       
     </>
