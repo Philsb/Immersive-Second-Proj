@@ -1,24 +1,32 @@
+import { Outlet } from 'react-router-dom';
+import { useState } from 'react';
+import Header from './Components/Header/Header';
+import CartContext from './Hooks/CartContext';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const [cartItems, setCartItems] = useState([])
+
+  const addItem = (item) => {
+    setCartItems([...cartItems,item]);
+  };
+
+  const popItems = () => {
+    cartItems.pop()
+    setCartItems(cartItems);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CartContext.Provider value={{items: cartItems , add: addItem, remove: popItems }}>
+        <Header/>
+        <Outlet/>
+      </CartContext.Provider>
+        
+      
+    </>
   );
 }
 
