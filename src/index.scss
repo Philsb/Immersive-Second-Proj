@@ -1,0 +1,59 @@
+@import "./styles/variables/mediaSizes.scss";
+@import "./styles/variables/fonts.scss";
+@import "./styles/variables/colors.scss";
+@import "./styles/variables/constants.scss";
+
+@import "./styles/mixins/global-mixins.scss";
+@import "./styles/base/base.scss";
+@import "./styles/base/utilityClases.scss";
+
+//Components
+@import "./components/card/ProductCard.scss"; 
+@import "./components/Container/FlexContainer.scss";
+@import "./components/header/Header.scss";
+@import "./components/MainBody/MainBody.scss";  
+@import "./components/Footer/Footer.scss";
+@import "./pages/products/Products.scss";
+@import "./components/searchbar/Searchbar.scss";
+@import "./components/Divider/Divider.scss";
+@import "./components/StarRating/IconStar.scss";
+@import "./components/IconToggle/IconToggle.scss";
+@import "./components/ToggleList/ToggleList.scss";
+@import "./components/PageNavigation/PageNavigation.scss";
+@import "./pages/product/Product.scss";
+@import "./components/carousel/StaticCarousel.scss";
+@import "./components/IncrementButton/IncrementButton.scss";
+@import "./pages/cart/Cart.scss";
+@import "./pages/checkout/Checkout.scss";
+@import "./components/CheckoutForm/CheckoutForm.scss";  
+@import "./pages/home/Home.scss";
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a:link {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a:visited {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+p{
+  display: block;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}

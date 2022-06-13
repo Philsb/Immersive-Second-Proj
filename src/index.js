@@ -1,17 +1,17 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import Home from './Pages/Home';
-import Products from './Pages/Products';
-import Product from './Pages/Product';
-import Cart from './Pages/Cart/Cart';
-import Checkout from './Pages/Checkout';
+import Home from './pages/home/Home';
+import Products from './pages/products/Products';
+import Product from './pages/product/Product';
+import Cart from './pages/cart/Cart';
+import Checkout from './pages/checkout/Checkout';
 import reportWebVitals from './reportWebVitals';
-import Header from './Components/Header/Header';
-
-
+import 'font-awesome/css/font-awesome.min.css';
+import './index.scss';
+import 'swiper/css';
+import 'swiper/css/bundle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,13 +21,16 @@ root.render(
         <Routes>
           <Route path = "/" element ={<App/>}>
             <Route index path="/" element= {<Home/>}/>
-            <Route path="products" element= {<Products/>}/>
-            <Route path="products">
+            <Route path="products" element= {<Products/>}>
+            </Route>
+            <Route path="product/">
               <Route path=":id" element={<Product/>}/>
             </Route>
             
             <Route path="cart" element= {<Cart/>}/>
-            <Route path="checkout" element= {<Checkout/>}/>
+            <Route path="cart">
+              <Route path="checkout" element= {<Checkout/>}/>
+            </Route>
           </Route>
           
         </Routes>

@@ -1,0 +1,11 @@
+.main-body {
+    margin-top: $header-height;
+    padding-top: $primary-padding;
+    @include mobile-margin;
+    @media (min-width:$media-pc ){
+
+        @include centered-body-margin;
+    
+    }
+    
+}

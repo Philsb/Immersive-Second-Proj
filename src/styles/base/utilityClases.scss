@@ -1,0 +1,11 @@
+.onFocus {
+    @include hover-focus; 
+}
+
+.empty-star-light {
+   stroke: $font-light;
+}
+
+.full-star-light {
+    fill: $font-light;
+ }

@@ -1,0 +1,67 @@
+.header {
+    margin: 0px;
+    max-height: $header-height;
+    display:flex;
+    background-color: $primary;
+    position:fixed;
+    z-index:10;
+    top:0;
+    width:100%;
+    &__logo-container{
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        flex-basis: 50%;
+        margin-left: 1rem;
+    }
+    &__links-container{
+        flex-grow: 1;
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+
+    }
+
+    &__logo {
+        width: $header-height;
+        height: $header-height;
+        object-fit: contain;
+    }
+
+    &__company-name {
+        margin-left: 1rem;
+        color:white;
+        display:none;
+        @media (min-width:$media-tablet){
+            display: block;
+        }
+    }
+    &__hamburger {
+        display: block;
+        background-color: $primary;
+        border:none;
+
+        @media (min-width:$media-tablet){
+            display: none;
+        }
+    }
+
+} 
+
+.anchor-list-h {
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    list-style-type: none;
+    color:$font-light;
+    &__anchor{
+        color: $font-light;
+        margin: 1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-decoration: none;
+        &:hover{
+            color:$hover-anchor;
+        }
+    }
+}

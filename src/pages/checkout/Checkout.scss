@@ -1,0 +1,29 @@
+.checkout-page {
+    display: flex;
+
+    &__content {
+        display:flex;
+        margin-top: 2rem;
+    }
+    &__item-container {
+        width: 100%;
+        margin-right:2rem;
+    }
+
+    &__details-container {
+        width: 50%;
+        margin-right:2rem;
+    }
+    &__form-container{
+        width: 50%;
+    }
+    &__total-price {
+        font-size: 1.4rem;
+        margin: 2rem;
+    }
+
+    &__total-price-container{
+        margin-top:3rem;
+    }
+
+}

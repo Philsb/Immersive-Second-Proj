@@ -1,0 +1,54 @@
+.home-page{
+    &__banner {
+        display: flex;
+    }
+
+    &__banner-info {
+        @include flex-col;
+        background-color: $primary;
+        width: 100%;
+        
+        color:$font-light;
+        padding:$primary-padding;
+
+        h1 {
+            font-size: 3rem;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+
+        @media (min-width:$media-tablet ){
+            display:block;
+            width:40%;
+            border-top-left-radius: $primary-round-border    ;
+            border-bottom-left-radius: $primary-round-border;
+        }
+    }
+
+    &__img{
+        width: 60%;
+        border-top-right-radius: $primary-round-border    ;
+        border-bottom-right-radius: $primary-round-border;
+        display:none;
+        @media (min-width:$media-tablet ){
+            display:block;
+        
+        }
+    }
+
+    &__search-games-container {
+        margin-top: 2rem;
+        display:flex;
+        font-size: 1.5rem;
+        align-items: center;
+        justify-content: space-between;
+
+        max-width: 37rem;
+
+    }
+
+    &__search-all-games {
+        color: rgb(70,70,70);
+    }
+}

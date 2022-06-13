@@ -1,0 +1,35 @@
+.page-navigation {
+    display: flex;
+    align-items: center;
+    
+    &__button {
+        padding:$primary-padding;
+        border-radius: $primary-round-border;
+        margin:$primary-margin;
+        border:none;
+        background-color:$light-gray;
+        transition: background-color ease-in-out 0.2s;
+        cursor:pointer;
+        
+        &:hover {
+            background-color:$light-blue;
+        }
+        &--current-page {
+            background-color:$light-blue;
+        }
+
+        &--side-button{
+            border:none;
+            background-color: #0000;
+            font-size: 2rem;
+            color:$light-gray2;
+            cursor:pointer;
+            
+            &:hover {
+                color:$light-blue;
+            }
+        }
+    }
+
+
+}

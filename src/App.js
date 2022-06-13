@@ -1,31 +1,68 @@
-import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
-import Header from './Components/Header/Header';
-import CartContext from './Hooks/CartContext';
-import logo from './logo.svg';
+import { Outlet, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import GameList, {GameData} from './services/Data';
+import databaseContext from "./hooks/databaseContext"
+import Header from './components/header/Header';
+import Footer from './components/Footer/Footer';
+
 import './App.css';
+import MainBody from './components/MainBody/MainBody';
+
 
 function App() {
+  const [gameList,setGameList] = useState(null);
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const [gameData, setGameData] = useState(null);
 
-  const [cartItems, setCartItems] = useState([])
+  useEffect(()=>{
+      setTimeout(()=>{
+          setGameList(GameList);
+          setHasLoaded(true);
 
-  const addItem = (item) => {
-    setCartItems([...cartItems,item]);
-  };
+      },3000);
+  }
+  ,[]);
 
-  const deleteItems = (id) => {
-    let index =cartItems.indexOf(id);
-    console.log(index);
-    cartItems.splice(index,1);
-    console.log ("Cart:", cartItems);
-    setCartItems(cartItems);
-  };
+  useEffect(()=> {
+    if (gameList != null) {
+        gameList.forEach(element => {
+          let url = "https://store.steampowered.com/api/appdetails?&cc=us&l=en&appids="+element.appid;
+          fetch(url).then((response) => {
+            return response.json();
+          }).then ((response)=>{
+            let id = element.appid;
+            let key = Object.keys(response)[0];
+            GameData[id] = response[key]; 
+            if (Object.keys(GameData).length == gameList.length) {
+              
+              setGameData(GameData);
+            }
+            
+          });
+        });
+    }
+
+  },[hasLoaded]);
 
   return (
     <>
       
-        <Header/>
-        <Outlet/>
+        <Header
+          logo = {{src:"/Icons/drawing.svg", alt: "Indie Rocket logo"}}
+          companyName = "Indie Rocket"
+          links ={[
+            {to:"/",element: <i className="fa fa-user"/>},
+            {to:"products",element:<i className="fa fa-th"/>},
+            {to:"cart",element: <i className="fa fa-shopping-bag"/>}
+          ]} 
+        />  
+
+        <MainBody>
+          <databaseContext.Provider value={{listHasLoaded:hasLoaded, list:gameList, data: gameData}}>
+            <Outlet/>
+          </databaseContext.Provider>
+        </MainBody>
+        <Footer/>
      
         
       
