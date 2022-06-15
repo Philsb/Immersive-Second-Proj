@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import FlexContainer from "../../components/Container/FlexContainer";
-import databaseContext from "../../hooks/databaseContext";
+import databaseContext from "../../context/databaseContext";
 import { v1 } from "uuid";
 import ProductCard from "../../components/card/ProductCard";
 import { addToCart } from "../../hooks/useCart";
@@ -68,13 +68,13 @@ const Home = (props) => {
                         Explore the best videogames in the market. 
                     </p>
                 </div>
-                <img className={`${block}__img`} src={"/Images/background2.jpg"} />
+                <img alt = "Main Image Banner" className={`${block}__img`} src={"/Images/background2.jpg"} />
                 
             </div>
             <div className={`${block}__search-games-container`}>
                 <h2>Popular Games</h2>
                 <i className="fa fa-lg fa-angle-right"/>
-                <Link to ="/products">
+                <Link aria-label="Go To All Products" to ="/products">
                     <h3 className={`${block}__search-all-games`}>Browse All Games ...</h3>
                 </Link>
                 
@@ -85,8 +85,8 @@ const Home = (props) => {
             <Divider/>
             {
                 gameData != null && <>
-                    <h2>New game in the block : Witcher 3</h2>
-                    <StaticCarousel
+                    <h2>New game on the block : <Link aria-label="Go to Witcher 3 page" to="product/292030">Witcher 3</Link></h2>
+                    <StaticCarousel 
                     imgSrc = {
                         gameData[292030].data.screenshots.map((item)=>{
                             return item.path_thumbnail;

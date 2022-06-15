@@ -1,7 +1,7 @@
 import { Outlet, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import GameList, {GameData} from './services/Data';
-import databaseContext from "./hooks/databaseContext"
+import databaseContext from "./context/databaseContext"
 import Header from './components/header/Header';
 import Footer from './components/Footer/Footer';
 
@@ -51,10 +51,10 @@ function App() {
           logo = {{src:"/Icons/drawing.svg", alt: "Indie Rocket logo"}}
           companyName = "Indie Rocket"
           links ={[
-            {to:"/",element: <i className="fa fa-user"/>},
-            {to:"products",element:<i className="fa fa-th"/>},
-            {to:"cart",element: <i className="fa fa-shopping-bag"/>}
-          ]} 
+            {title: "products",to:"products",element:<i className="fa fa-th"/>},
+            {title: "Account",to:"/",element: <i className="fa fa-user"/>}
+          ]}
+          shoppingCart = {{title: "cart",to:"cart",element: <i className="fa fa-shopping-basket"/>}}
         />  
 
         <MainBody>

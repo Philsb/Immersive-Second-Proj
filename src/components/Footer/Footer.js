@@ -14,7 +14,7 @@ const Footer = (props)=>{
                 
                 <div className={`${block}__link-container`}>
                     <div className={`${block}__links`}>
-                        <h4>Languages</h4>
+                        <h3>Languages</h3>
                         <List className={`${block}__list`}>
                         
                             <a href="#" aria-label="Change to English Language">English</a>
@@ -25,7 +25,7 @@ const Footer = (props)=>{
                     </div>
                      
                     <div className={`${block}__links`}>
-                        <h4>Manage Acount</h4>
+                        <h3>Manage Acount</h3>
                         <List className={`${block}__list`}>
                         
                             <a href="#" aria-label="Login">Login</a>

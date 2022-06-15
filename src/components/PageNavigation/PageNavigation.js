@@ -31,14 +31,14 @@ const PageNavigation = (props) => {
     return (
         <div className={`${block}`}>
             {currentPage == 0 ? <></> : 
-                <button onClick={()=>{onClickItem(currentPage-1)}} className={`${block}__button--side-button`}>
+                <button aria-label = {"decrement page number"} onClick={()=>{onClickItem(currentPage-1)}} className={`${block}__button--side-button`}>
                     <i className={"fa fa-angle-double-left "}/>
                 </button>
             }
             
             {pagesElements}
             {currentPage >= pagesQuantity-1 ? <></> :
-                 <button onClick={()=>{onClickItem(currentPage+1)}} className={`${block}__button--side-button`}>
+                 <button aria-label="Increment Page Number" onClick={()=>{onClickItem(currentPage+1)}} className={`${block}__button--side-button`}>
                     <i className={"fa fa-angle-double-right "}/>
                 </button> 
             }

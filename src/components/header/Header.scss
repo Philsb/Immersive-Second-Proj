@@ -17,8 +17,8 @@
     &__links-container{
         flex-grow: 1;
         align-items: center;
-        display: flex;
         justify-content: flex-end;
+        display: flex;
 
     }
 
@@ -43,6 +43,26 @@
 
         @media (min-width:$media-tablet){
             display: none;
+        }
+    }
+
+    &__shop-cart-cont{
+        display: flex;
+        align-items: items;
+        margin-right: 0.5rem;
+        position:relative;
+    }
+
+    &__circle{
+
+        display: none;
+        position:absolute;
+        top:0.8rem;
+        right: 0rem;
+        font-size: 0.7rem;
+        color:rgb(255, 60, 0);
+        &--active{
+            display:block;
         }
     }
 

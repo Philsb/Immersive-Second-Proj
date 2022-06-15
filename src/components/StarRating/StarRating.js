@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { v1 } from 'uuid';
 import IconStar from "./IconStar";
 
 const StarRating = (props) => {
@@ -9,10 +10,10 @@ const StarRating = (props) => {
 
     for(let i = 0; i<5; ++i){
         if (i+1 > rating) {
-            starElements.push(<IconStar fullClass= {fullClass} emptyClass= {emptyClass} full = {false}/>)
+            starElements.push(<IconStar key={v1()} fullClass= {fullClass} emptyClass= {emptyClass} full = {false}/>)
         }
         else {
-            starElements.push(<IconStar fullClass= {fullClass} emptyClass= {emptyClass} full = {true}/>)
+            starElements.push(<IconStar key={v1()} fullClass= {fullClass} emptyClass= {emptyClass} full = {true}/>)
         }
     }
     return (

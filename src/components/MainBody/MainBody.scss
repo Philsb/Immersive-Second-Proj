@@ -1,6 +1,7 @@
 .main-body {
     margin-top: $header-height;
     padding-top: $primary-padding;
+    min-height: 70vh;
     @include mobile-margin;
     @media (min-width:$media-pc ){
 

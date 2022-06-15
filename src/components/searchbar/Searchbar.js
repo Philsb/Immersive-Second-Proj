@@ -13,14 +13,14 @@ export default function SearchBar (props) {
 
     return (
         <div className={mainClass}>
-            <input className={`${block}__search`} 
+            <input aria-label={"game name search"} className={`${block}__search`} 
                     onFocus={()=>{setIsFocused(true)}} 
                     onBlur={()=>{setIsFocused(false)}} 
                     onChange = {changeSearch} 
                     type="text" 
                     id="searchBar" 
                     placeholder="Search..."/>
-            <button className={`${block}__icon`}>
+            <button aria-label = {"Execute Search"}className={`${block}__icon`}>
                 <i className={"fa fa-search"}></i>
             </button>
             

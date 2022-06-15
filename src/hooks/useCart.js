@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { BehaviorSubject } from "rxjs";
 
 //TODO Change my cart variable
-let myCart = [];
+if (localStorage.getItem("cart") == null){
+    localStorage.setItem("cart",JSON.stringify([]));
+}
+let myCart = JSON.parse(localStorage.getItem("cart"));
 let myCartState$ = new BehaviorSubject(myCart);
 
 const addToCart = (value, quantity = 1) => {
@@ -16,6 +19,7 @@ const addToCart = (value, quantity = 1) => {
         newAr = [...myCart, {id:value, count: quantity}];
     }   
     myCart = newAr;
+    localStorage.setItem("cart",JSON.stringify(myCart));
     myCartState$.next(myCart);
 };
 
@@ -30,12 +34,15 @@ const deleteFromCart = (value) => {
         }
         
     } 
+    localStorage.setItem("cart",JSON.stringify([...myCart]));
     myCartState$.next([...myCart]);
 };
 
 const removeAllFromCart = () => {
     myCart = [];    
+    localStorage.setItem("cart",JSON.stringify(myCart));
     myCartState$.next(myCart);
+
 }
 
 const useCart = () => {

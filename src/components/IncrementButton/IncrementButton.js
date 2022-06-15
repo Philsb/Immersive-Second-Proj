@@ -6,11 +6,11 @@ const IncrementButton = (props) => {
 
     return (
         <div className={`${block}`}>
-            <button className={`${block}__button`} onClick={handleDec}>
+            <button aria-label="Decrement Product" className={`${block}__button`} onClick={handleDec}>
                 <i className="fa fa-minus"/>
             </button>
             {currentNumber}
-            <button className={`${block}__button`} onClick={handleInc}>
+            <button aria-label="Increment Product" className={`${block}__button`} onClick={handleInc}>
                 <i className="fa fa-plus"/>
             </button>
                 

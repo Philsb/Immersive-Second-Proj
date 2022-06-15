@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../../components/searchbar/Searchbar"
 import ProductCard from "../../components/card/ProductCard";
 import { addToCart } from "../../hooks/useCart";
-import databaseContext from "../../hooks/databaseContext";
+import databaseContext from "../../context/databaseContext";
 
 import List from "../../components/list/List";
 import FlexContainer from "../../components/Container/FlexContainer";
@@ -37,8 +37,9 @@ function Products (props) {
         const query = new URLSearchParams(search);
         let tags = query.getAll("tag");
         let pag = query.get("pag");
-
-        setTagQuery(tags);
+        setTagQuery(tags.map((item)=>{
+            return item.split(",");
+        }).flat());
         setPage(pag ? pag : 0);
     },[thisUrl]);
 
@@ -62,7 +63,7 @@ function Products (props) {
     
     let games = null;
 
-
+    let gamesQuantity = 0;
     if (gameList != null && gameData != null){
         games = gameList.filter((item, index)=>{
             if (gameData[item.appid].success == false) {
@@ -79,12 +80,12 @@ function Products (props) {
             //Filter by name
             let name = gameDataHandle.name;
             shouldRender = name.toLowerCase().includes(searchQuery.toLowerCase()) && shouldRender;
-            
-            //Filter by page
-            shouldRender = (index>=page*productsPerPage && index < (page*productsPerPage + productsPerPage)) && shouldRender;
-
-            
+            if (shouldRender){
+                gamesQuantity += 1;
+            }
             return shouldRender;
+        }).filter ((item,index)=>{
+            return (index>=page*productsPerPage && index < (page*productsPerPage + productsPerPage));
         })
         .map (item => {
             let gameDataHandle = gameData[item.appid].data; 
@@ -127,7 +128,6 @@ function Products (props) {
         });
     }
 
-    
 
     return (
         
@@ -145,10 +145,16 @@ function Products (props) {
                                 <Divider/>
                                 <ToggleList
                                     toggleableItems = {[
-                                        {toggled:tagQuery.includes("First Person Shooter".toLowerCase()),title: "First Person Shooter", function:()=>{addTag("First Person Shooter")}},
+                                        {toggled:tagQuery.includes("Action".toLowerCase()),title: "Action", function:()=>{addTag("Action")}},
                                         {toggled:tagQuery.includes("Free to Play".toLowerCase()),title: "Free to Play", function:()=>{addTag("Free to Play")}},
                                         {toggled:tagQuery.includes("2D".toLowerCase()),title: "2D", function:()=>{addTag("2D")}},
-                                        {toggled:tagQuery.includes("Casual".toLowerCase()),title: "Casual", function:()=>{addTag("Casual")}}
+                                        {toggled:tagQuery.includes("Casual".toLowerCase()),title: "Casual", function:()=>{addTag("Casual")}},
+                                        {toggled:tagQuery.includes("Indie".toLowerCase()),title: "Indie", function:()=>{addTag("Indie")}},
+                                        {toggled:tagQuery.includes("3D".toLowerCase()),title: "3D", function:()=>{addTag("3D")}},
+                                        {toggled:tagQuery.includes("Adventure".toLowerCase()),title: "Adventure", function:()=>{addTag("Adventure")}},
+                                        {toggled:tagQuery.includes("RPG".toLowerCase()),title: "RPG", function:()=>{addTag("RPG")}},
+                                        {toggled:tagQuery.includes("Strategy".toLowerCase()),title: "Strategy", function:()=>{addTag("Strategy")}},
+
                                     ]}
                                 />
                             </div>
@@ -176,8 +182,8 @@ function Products (props) {
                                         
                                             <PageNavigation 
                                                 currentPage = {parseInt(page,10)} 
-                                                pagesQuantity = {10}
-                                                sidePages = {3}
+                                                pagesQuantity = {Math.ceil(gamesQuantity/5)}
+                                                sidePages = {Math.min(3,gamesQuantity)}
                                                 onClickItem = {(pagIndex)=>{
                                                     let newUrl = tagQuery.length>0 ? new URLSearchParams({tag: tagQuery, pag: pagIndex}).toString() : new URLSearchParams({ pag: pagIndex}).toString() ;
                                                     setPage(pagIndex);

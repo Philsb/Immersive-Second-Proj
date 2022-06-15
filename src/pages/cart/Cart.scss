@@ -39,17 +39,28 @@
         border-top-left-radius: $primary-round-border;
         border-bottom-left-radius: $primary-round-border;
         margin-right: 1rem;
+        display:none;
+        @media (min-width:$media-pc ){
+            display:block
+        }
     }
 
     &__info-container {
         padding: $primary-padding;
+        font-size: 0.7rem;
+        @media (min-width:$media-pc ){
+            font-size: 1rem;
+        }
     }
     &__price-container {
-
         display: flex;
         align-items: center;
-        min-width : 15rem;
+        min-width : 10rem;
         max-width: 15rem;
+        transform: scale(0.8);
+        @media (min-width:$media-tablet ){
+            transform: scale(1);
+        }
     }
 
     &__add-button{
@@ -59,5 +70,10 @@
     &__price {
         margin-left: $primary-margin;
         font-size: 1.7rem;
+    }
+
+    &__loading {
+        font-size : 5rem;
+        text-align: center;
     }
 }

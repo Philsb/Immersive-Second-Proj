@@ -1,6 +1,7 @@
 .product {
     &__main-container {
        display: flex;
+       min-width: 100%;
        flex-direction: column;
        margin-bottom: 3rem;
 
@@ -12,16 +13,30 @@
         }
     }
     &__details {
-        min-width:30%;
+        
+        @media (min-width:$media-tablet ){
+            min-width:40%;
+
+        
+        }
     }
 
     &__media {
-        margin-right: 2rem;
-        min-width: 70%;
+        background-color: $light-gray;
+        border-radius: $primary-round-border;
+        padding: $primary-padding;
+        margin-bottom: 1rem;
+        @media (min-width:$media-tablet ){
+            min-width:40%;
+            min-width: 60%;
+            margin-right: 2rem;
+        }
+        
     }
     &__secondary-img {
         width:100%;
-        border-radius: $primary-round-border;
+        background-color: $light-gray;
+        
     }
 
     &__desc {
@@ -39,8 +54,10 @@
         }
     }
 
-    &__buy-info {
-       
+    &__info {
+        background-color: $light-gray;
+        border-radius: $primary-round-border;
+        padding: $primary-padding;
     }
 
     &__star-rating {

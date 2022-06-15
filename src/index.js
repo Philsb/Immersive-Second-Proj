@@ -10,8 +10,6 @@ import Checkout from './pages/checkout/Checkout';
 import reportWebVitals from './reportWebVitals';
 import 'font-awesome/css/font-awesome.min.css';
 import './index.scss';
-import 'swiper/css';
-import 'swiper/css/bundle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

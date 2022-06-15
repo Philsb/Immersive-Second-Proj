@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import Divider from '../Divider/Divider';
 import StarRating from "../StarRating/StarRating";
 
@@ -45,8 +46,8 @@ const ProductCard = (props) => {
        <article onMouseEnter={playVideo} onMouseLeave={stopResetVideo} className={`${block}__root `}>
 
             <div className= {`${block}__media-container`}>
-                <Link to={`/product/${id}`} >
-                <img className={`${block}__img`} src={thumbnailSrc} alt={title + "thumbnail"}/>
+                <Link aria-label = {"Go To product" + title} to={`/product/${id}`} >
+                <img className={`${block}__img`} src={thumbnailSrc} alt={title + " thumbnail"}/>
                 {
                     hasVideo &&
                     <video className={`${block}__video`}muted>
@@ -59,18 +60,18 @@ const ProductCard = (props) => {
             
             <div className={`${block}__main-container`}>
                 <div className={`${block}__title-container`}>
-                    <Link to={`/product/${id}`} >
+                    <Link aria-label ={"Go to" + title+ " page"}to={`/product/${id}`} >
                         <h3 className={`${block}__title`}>{title}</h3>
                     </Link>
-                    <Link to={`/product/${id}`} >
+                    <Link aria-label ={"Go to" + title+ " page"} to={`/product/${id}`} >
                         <h4 className={`${block}__author`}> {author} </h4>
                     </Link>
                     
                 </div>
                 <div className={`${block}__info-container `}>
-                    <Link to={`/product/${id}`} >
+                    <Link aria-label ={"Go to" + title+ " page"} to={`/product/${id}`} >
                         <div className={`${block}__rating-info`}>
-                            <StarRating rating= {rating} emptyClass ="empty-star-light" fullClass ="full-star-light"/>
+                            <StarRating rating= {2} emptyClass ="empty-star-light" fullClass ="full-star-light"/>
                             <Divider isVertical = {true}/>
                             <p><i className={"fa fa-heart"}/> {recommendationQuantity}</p>
                             
@@ -80,7 +81,14 @@ const ProductCard = (props) => {
                 
                     <div className={`${block}__buy-info`}>
                         <p>{price}</p>
-                        <button className={`${block}__add-cart`} onClick={handleAddToCart}><i className="fa fa-shopping-basket"/> Add to cart</button>
+                        <button className={`${block}__add-cart`}
+                         onClick={(e) => {
+                            handleAddToCart(e); 
+                            Swal.fire({
+                                icon: "sucess",
+                                text: "Added To Cart!"
+                            });
+                        }}><i className="fa fa-shopping-basket"/> Add to cart</button>
                     </div>
                     
                     

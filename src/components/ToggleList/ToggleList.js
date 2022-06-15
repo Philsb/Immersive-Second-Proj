@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { v1 } from "uuid";
 import IconToggle from "../IconToggle/IconToggle";
 import List from "../list/List";
 
@@ -18,7 +19,7 @@ const ToggleList = (props) => {
                     item.function(); 
                 }
 
-                return <button className={`${block}__button`} onClick={handleToggle}>
+                return <button key={v1()} className={`${block}__button`} onClick={handleToggle}>
                             <div className={`${block}__icon`}>
                                 <IconToggle isActive = {item.toggled}/> 
                             </div> 
